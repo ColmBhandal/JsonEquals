@@ -46,5 +46,16 @@ namespace JsonEquals.Extension
 
             return jsonComparison;
         }
+
+        /// <summary>
+        /// Determines whether this object is equal to the other in terms of its serialized JSON content
+        /// </summary>
+        /// <param name="leftObj">The left object to compare</param>
+        /// <param name="rightObj">The right object to compare</param>
+        /// <returns>True iff the objects are equal, either referentially or by their serialized body</returns>
+        public static bool IsJsonEqual(this object leftObj, object rightObj)
+        {
+            return leftObj.JsonEquals(rightObj).IsEqual;
+        }
     }
 }
