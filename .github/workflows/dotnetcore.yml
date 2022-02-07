@@ -21,7 +21,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
+        dotnet-version: '6.0.x'
     - name: Update version
       run: cd BuildTools && chmod +x *.sh && ./UpdateVersion.sh
     - name: Install dependencies
