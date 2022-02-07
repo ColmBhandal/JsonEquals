@@ -35,5 +35,31 @@ namespace JsonEquals.assert
                 .AppendLine(equality.Message);
             Assert.IsTrue(equality.IsEqual, sb.ToString());
         }
+
+        /// <summary>
+        /// Asserts that the objects are not equal in terms of their serialized JSON content
+        /// </summary>
+        /// <param name="leftObj">The left object to compare</param>
+        /// <param name="rightObj">The right object to compare</param>
+        public static void AreNotJsonEqual(object leftObj, object rightObj)
+        {
+            IEqualityResult equality = leftObj.JsonEquals(rightObj);
+            Assert.IsFalse(equality.IsEqual, equality.Message);
+        }
+
+        /// <summary>
+        /// Asserts that the objects are not equal in terms of their serialized JSON content
+        /// </summary>
+        /// <param name="leftObj">The left object to compare</param>
+        /// <param name="rightObj">The right object to compare</param>
+        /// <param name="customFailureMessage">A custom message to add to the assertion, in the case of failure</param>
+        public static void AreNotJsonEqual(object leftObj, object rightObj, string customFailureMessage)
+        {
+            IEqualityResult equality = leftObj.JsonEquals(rightObj);
+            StringBuilder sb = new StringBuilder()
+                .AppendLine(customFailureMessage)
+                .AppendLine(equality.Message);
+            Assert.IsFalse(equality.IsEqual, sb.ToString());
+        }
     }
 }
